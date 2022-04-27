@@ -1,16 +1,13 @@
-Finish coding simple application retrieving food fact information from https://world.openfoodfacts.org/api/v0/product/XXX.json with a GET request where XXX is a barcode string, no additional headers required
+this project will convert your two layer json data to any language which is listed.
+this has been made to overcome translate issue. which free tool like google, michrosoft are prvidong translate upto 5000 words but does not support translation of json data. this will only support two layered json data.
 
-Files requiring modification: app.component.ts, app.module.ts, app.service.ts
+ex. of twwo layer Json data :
 
-No additional import statements should be needed
+Input :
+{"hello":{"Hello":"hello"}}
 
-Barcode to retrieve info for: 737628064502
+Output:
+{ "hello": { "Hello": "Ciao" }}
 
-Response object field to display: product.generic_name_en i.e.
-{
-     product: {
-        generic_name_en: 'Food Name'
-    }
-}
-
-When complete, should display "Name: Rice Noodles" at the top
+this has made to only translate value , but not the property name.
+this has been  tasted with as larg as 15000 word json file.

@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   private name: any;
-  selectedLang:"en"
+  selectedLang: 'en';
   constructor(private appService: AppService) {}
   languageList: any = {
     af: 'afrikaans',
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     ar: 'arabic',
     hy: 'armenian',
     az: 'azerbaijani',
-    'eu': 'basque',
+    eu: 'basque',
     be: 'belarusian',
     bn: 'bengali',
     bs: 'bosnian',
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     'zh-cn': 'chinese (simplified)',
     'zh-tw': 'chinese (traditional)',
     co: 'corsican',
-    'hr': 'croatian',
+    hr: 'croatian',
     cs: 'czech',
     da: 'danish',
     nl: 'dutch',
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
     kn: 'kannada',
     kk: 'kazakh',
     km: 'khmer',
-    'ko': 'korean',
+    ko: 'korean',
     ku: 'kurdish (kurmanji)',
     ky: 'kyrgyz',
     lo: 'lao',
@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
     pt: 'portuguese',
     pa: 'punjabi',
     ro: 'romanian',
-    'ru': 'russian',
+    ru: 'russian',
     sm: 'samoan',
     gd: 'scots gaelic',
     sr: 'serbian',
@@ -121,21 +121,24 @@ export class AppComponent implements OnInit {
   };
   /*
     Write code obtaining data from service on initialization and displaying object field
-  */ 
+  */
   dataInput: any;
   dataoflang: any;
-  ngOnInit() {} 
+  ngOnInit() {}
   onTranslate() {
     this.dataoflang = JSON.parse(this.dataInput);
     // let lastKey = Object.keys(this.dataoflang).pop();
     for (let item in this.dataoflang) {
       for (let p in this.dataoflang[item]) {
+        debugger;
         // let lastKeyIn = Object.keys(this.dataoflang[item]).pop();
-        this.appService.getFoodFacts(p, this.selectedLang).subscribe((response) => {
-          let prod = response[0][0][0];
-          this.dataoflang[item][p] = prod;
-        });
+        this.appService
+          .getTranslation(this.dataoflang[item][p], this.selectedLang)
+          .subscribe((response) => {
+            let prod = response[0][0][0];
+            this.dataoflang[item][p] = prod;
+          });
       }
-    }
+    } 
   }
 }

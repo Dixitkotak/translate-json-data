@@ -1,7 +1,7 @@
-this project will convert your two layer json data to any language which is listed.
-this has been made to overcome translate issue. which free tool like google, michrosoft are prvidong translate upto 5000 words but does not support translation of json data. this will only support two layered json data.
+this project will convert your two-layer JSON data to any language which is listed.
+this has been made to overcome the translation issues. which free tools like Google, and Microsoft is providing translation up to 5000 words but do not support the translation of JSON data. this will only support two-layered JSON data.
 
-ex. of two layer Json data :
+ex. of two-layer JSON data :
 
 Input :
 {"hello":{"Hello":"hello"}}
@@ -9,5 +9,5 @@ Input :
 Output:
 { "hello": { "Hello": "Ciao" }}
 
-this has made to only translate value , but not the property name.
-this has been  tasted with as larg as 15000 word json file.
+this has made to only translate value, but not the property name.
+this has been tasted with as large as a 15000-word JSON files.

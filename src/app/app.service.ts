@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class AppService {
   constructor(private http: HttpClient) {}
 
-  getFoodFacts(id: string,lg:string): Observable<any> {
+  getTranslation(id: string, lg: string): Observable<any> {
     //Write code calling service to obtain food fact data
     //https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=es&dt=t&q=${id} spenish
     //https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=et&dt=t&q=${id} Estonian

@@ -1,14 +1,24 @@
-<h1>Translated Data</h1>
+<h1>Translate Data</h1>
 
-<textarea [(ngModel)]="dataInput" placeholder="enter JSON data of object with multiple object" name="itext"></textarea>
+<textarea
+  [(ngModel)]="dataInput"
+  placeholder="enter JSON data of object with multiple object"
+  name="itext"
+></textarea>
 
-<select class="form-control control-border-color" [(ngModel)]="selectedLang" name="selection">
-<option *ngFor="let doctor of languageList | keyvalue" [value]="doctor.key">{{doctor.value}}</option>
+<select
+  class="form-control control-border-color"
+  [(ngModel)]="selectedLang"
+  name="selection"
+>
+  <option *ngFor="let doctor of languageList | keyvalue" [value]="doctor.key">
+    {{ doctor.value }}
+  </option>
 </select>
 <button (click)="onTranslate()">Translate</button>
 
 <textarea [(ngModel)]="stringData" placeholder="Output" name="opt"></textarea>
 
 <p>
-{{ dataoflang | json }}
+  {{ dataoflang | json }}
 </p>

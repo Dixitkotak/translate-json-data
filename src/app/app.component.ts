@@ -124,7 +124,7 @@ export class AppComponent implements OnInit {
   */
   dataInput: any;
   dataoflang: any;
-  stringData:string="";
+  stringData: string = '';
   ngOnInit() {}
   onTranslate() {
     this.dataoflang = JSON.parse(this.dataInput);
@@ -138,9 +138,9 @@ export class AppComponent implements OnInit {
           .subscribe((response) => {
             let prod = response[0][0][0];
             this.dataoflang[item][p] = prod;
-this.stringData=JSON.stringify(this.dataoflang);
+            this.stringData = JSON.stringify(this.dataoflang, null, 4);
           });
       }
-    } 
+    }
   }
 }

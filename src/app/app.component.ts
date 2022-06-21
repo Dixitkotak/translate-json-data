@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { AppService } from './app.service';
 
@@ -10,7 +11,7 @@ import { AppService } from './app.service';
 export class AppComponent implements OnInit {
   private name: any;
   selectedLang: 'en';
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService,private sanitizer: DomSanitizer) {}
   languageList: any = {
     af: 'afrikaans',
     sq: 'albanian',
@@ -122,6 +123,7 @@ export class AppComponent implements OnInit {
   /*
     Write code obtaining data from service on initialization and displaying object field
   */
+    downloadJsonHref:any;
   dataInput: any;
   dataoflang: any;
   stringData: string = '';
@@ -143,4 +145,9 @@ export class AppComponent implements OnInit {
       }
     }
   }
+  generateDownloadJsonUri() {
+    var theJSON = JSON.stringify(this.stringData);
+    var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+    this.downloadJsonHref = uri;
+}
 }

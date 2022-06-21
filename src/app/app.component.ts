@@ -153,6 +153,11 @@ export class AppComponent implements OnInit {
             this.stringData = JSON.stringify(this.dataoflang, null, 4);
             this.generateDownloadJsonUri();
           });
+        // debugger;
+        // var last = Object.keys(this.dataoflang).pop();
+        // if (item == last && ) {
+        //   alert();
+        // }
       }
     }
   }

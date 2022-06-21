@@ -19,7 +19,13 @@
 
 <textarea [(ngModel)]="stringData" placeholder="Output" name="opt"></textarea>
 
+<a
+  class="btn btn-clear"
+  title="Download JSON"
+  [href]="downloadJsonHref"
+  download="{{ fileName }}"
+  >Download</a
+>
 <p>
   {{ dataoflang | json }}
 </p>
-<a class="btn btn-clear" title="Download JSON" [href]="downloadJsonHref" download="download.json">Download</a>

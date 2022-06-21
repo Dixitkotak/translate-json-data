@@ -1,31 +1,48 @@
 <h1>Translate Data</h1>
+<div class="row">
+  <div class="col-md-3 col-sm-6">
+    <textarea
+      [(ngModel)]="dataInput"
+      placeholder="enter JSON data of object with multiple object"
+      name="itext"
+    ></textarea>
+  </div>
+  <div class="col-md-3 col-sm-3">
+    <select
+      class="form-control control-border-color"
+      [(ngModel)]="selectedLang"
+      name="selection"
+    >
+      <option selected disabled [value]="undefined">--Select language--</option>
+      <option
+        *ngFor="let doctor of languageList | keyvalue"
+        [value]="doctor.key"
+      >
+        {{ doctor.value }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-1 col-sm-6">
+    <button (click)="onTranslate()">Translate</button>
+  </div>
+  <div class="col-md-3">
+    <textarea
+      [(ngModel)]="stringData"
+      placeholder="Output"
+      name="opt"
+    ></textarea>
+  </div>
+  <div class="col-md-2 col-sm-6">
+    <a
+      class="btn btn-clear"
+      title="Download JSON"
+      [href]="downloadJsonHref"
+      download="{{ fileName }}"
+      >Download</a
+    >
+  </div>
+</div>
 
-<textarea
-  [(ngModel)]="dataInput"
-  placeholder="enter JSON data of object with multiple object"
-  name="itext"
-></textarea>
-
-<select
-  class="form-control control-border-color"
-  [(ngModel)]="selectedLang"
-  name="selection"
->
-  <option *ngFor="let doctor of languageList | keyvalue" [value]="doctor.key">
-    {{ doctor.value }}
-  </option>
-</select>
-<button (click)="onTranslate()">Translate</button>
-
-<textarea [(ngModel)]="stringData" placeholder="Output" name="opt"></textarea>
-
-<a
-  class="btn btn-clear"
-  title="Download JSON"
-  [href]="downloadJsonHref"
-  download="{{ fileName }}"
-  >Download</a
->
 <p>
   {{ dataoflang | json }}
 </p>

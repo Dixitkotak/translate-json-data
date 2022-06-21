@@ -1,7 +1,8 @@
-<h1>Translate Data</h1>
+<h1 class="d-flex justify-content-center">Translate Data</h1>
 <div class="row">
   <div class="col-md-3 col-sm-6">
     <textarea
+      class="col-md-12 col-sm-12"
       [(ngModel)]="dataInput"
       placeholder="enter JSON data of object with multiple object"
       name="itext"
@@ -23,10 +24,11 @@
     </select>
   </div>
   <div class="col-md-1 col-sm-6">
-    <button (click)="onTranslate()">Translate</button>
+    <button (click)="onTranslate()" class="btn btn-primary">Translate</button>
   </div>
   <div class="col-md-3">
     <textarea
+      class="col-md-12 col-sm-12"
       [(ngModel)]="stringData"
       placeholder="Output"
       name="opt"
@@ -34,11 +36,11 @@
   </div>
   <div class="col-md-2 col-sm-6">
     <a
-      class="btn btn-clear"
+      class="link-success"
       title="Download JSON"
       [href]="downloadJsonHref"
       download="{{ fileName }}"
-      >Download</a
+      >Download json file</a
     >
   </div>
 </div>

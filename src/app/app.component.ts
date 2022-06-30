@@ -157,11 +157,7 @@ export class AppComponent implements OnInit {
             var lastofItem = Object.keys(this.dataoflang[item])[
               Object.keys(this.dataoflang[item]).length - 1
             ];
-            if (item == last && lastofItem == p && allDownload) {
-              this.selectedLang= lang;
-              this.fileName = `${this.languageList[this.selectedLang]}.json`;
-              this.generateDownloadJsonUri();
-            }
+           
           });
        
       }

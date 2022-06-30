@@ -26,15 +26,18 @@
   <div class="col-md-1 col-sm-6">
     <button (click)="onTranslate()" class="btn btn-primary">Translate</button>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-2 col-sm-6">
+  <button (click)="downloadAllData(true)" class="btn btn-primary">Translate & Download All</button>
+</div>
+  <!-- <div class="col-md-3">
     <textarea
       class="col-md-12 col-sm-12"
       [(ngModel)]="stringData"
       placeholder="Output"
       name="opt"
     ></textarea>
-  </div>
-  <div class="col-md-2 col-sm-6">
+  </div> -->
+  <!-- <div class="col-md-2 col-sm-6">
     <a
       class="link-success"
       title="Download JSON"
@@ -42,7 +45,7 @@
       download="{{ fileName }}"
       >Download json file</a
     >
-  </div>
+  </div> -->
 </div>
 
 <p>

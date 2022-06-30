@@ -10,7 +10,7 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   private name: any;
-  selectedLang: 'en';
+  selectedLang:string= 'en';
   constructor(
     private appService: AppService,
     private sanitizer: DomSanitizer
@@ -138,34 +138,48 @@ export class AppComponent implements OnInit {
   dataoflang: any;
   stringData: string = '';
   ngOnInit() {}
-  onTranslate() {
+  onTranslate(allDownload?,lang?) {
     this.fileName = `${this.languageList[this.selectedLang]}.json`;
     this.dataoflang = JSON.parse(this.dataInput);
     // let lastKey = Object.keys(this.dataoflang).pop();
+    var last = Object.keys(this.dataoflang)[
+      Object.keys(this.dataoflang).length - 1
+    ];
+  
     for (let item in this.dataoflang) {
       for (let p in this.dataoflang[item]) {
         // let lastKeyIn = Object.keys(this.dataoflang[item]).pop();
         this.appService
-          .getTranslation(this.dataoflang[item][p], this.selectedLang)
+          .getTranslation(this.dataoflang[item][p],allDownload?lang:this.selectedLang)
           .subscribe((response) => {
             let prod = response[0][0][0];
             this.dataoflang[item][p] = prod;
-            this.stringData = JSON.stringify(this.dataoflang, null, 4);
-            this.generateDownloadJsonUri();
+            var lastofItem = Object.keys(this.dataoflang[item])[
+              Object.keys(this.dataoflang[item]).length - 1
+            ];
+            if (item == last && lastofItem == p && allDownload) {
+              this.selectedLang= lang;
+              this.fileName = `${this.languageList[this.selectedLang]}.json`;
+              this.generateDownloadJsonUri();
+            }
           });
-        // debugger;
-        // var last = Object.keys(this.dataoflang).pop();
-        // if (item == last && ) {
-        //   alert();
-        // }
+       
       }
     }
   }
+  downloadAllData(){
+    for( const [key, value] of Object.entries(this.languageList)   ){
+      this.onTranslate( true,key.toString())
+    }
+  }
   generateDownloadJsonUri() {
-    var theJSON = JSON.stringify(this.dataoflang);
-    var uri = this.sanitizer.bypassSecurityTrustUrl(
-      'data:text/json;charset=UTF-8,' + encodeURIComponent(theJSON)
-    );
-    this.downloadJsonHref = uri;
+  var sJson = JSON.stringify(this.dataoflang);
+  var element = document.createElement('a');
+  element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
+  element.setAttribute('download',this.fileName);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click(); // simulate click
+  document.body.removeChild(element);
   }
 }
